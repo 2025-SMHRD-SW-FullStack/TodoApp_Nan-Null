@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import TodoItem from "./TodoItem";
+import TopMove from "./TopMove";
 
 const Todo = () => {
   const [todos, setTodos] = useState([]);
@@ -13,6 +14,15 @@ const Todo = () => {
 
     inputRef.current.value = "";
     inputRef.current.focus();
+  };
+
+  const moveTop = (data) => {
+    console.log(data);
+
+    // const value =
+    // const top = todos[0];
+    // const newTodos = [];
+    // setTodos(newTodos);
   };
 
   return (
@@ -36,11 +46,13 @@ const Todo = () => {
         </form>
       </div>
 
-      <div className="w-3/4">
+      <ol className="w-3/4 space-y-4">
         {todos.map((item, index) => (
-          <TodoItem key={index} todoItem={item} index={index} />
+          <TodoItem key={index} todoItem={item} index={index}>
+            <TopMove todos={todos} setTodos={setTodos} index={index} />
+          </TodoItem>
         ))}
-      </div>
+      </ol>
     </div>
   );
 };
