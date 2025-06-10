@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import TodoItem from "./TodoItem";
 import Update from "./Update";
+import TopMove from "./TopMove";
 
 const Todo = () => {
     const [todos, setTodos] = useState([]);
@@ -34,6 +35,7 @@ const Todo = () => {
                 {todos.map((item, index) => (
                     <TodoItem key={index} todoItem={item} index={index}>
                         <Update index={index} todos={todos} setTodos={setTodos} />
+                        <TopMove todos={todos} setTodos={setTodos} index={index} />
                     </TodoItem>
                 ))}
             </div>
