@@ -7,7 +7,11 @@ const TodoItem = ({ todoItem, index, buttons }) => {
         <div className="relative">
           <del className="w-0 h-0">
             <p className=" text-5xl m-0 flex items-center gap-x-4">
-              {index + 1}. {checkBox} {todoItem.data}
+              {index + 1}.{" "}
+              <span>
+                {checkBox}
+                {todoItem.data}
+              </span>
             </p>
           </del>
           <div className="absolute w-[100px] h-[5px] bg-black top-[48%]"></div>

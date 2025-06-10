@@ -1,7 +1,9 @@
 import React from "react";
 
 function CheckBox({ todos, setTodos, index }) {
-  const handleCheck = (e) => {
+  const isComplete = todos[index].isComplete;
+
+  const handleCheck = () => {
     const newTodo = todos.map((todo, todoIndex) => {
       if (index === todoIndex) {
         return { ...todo, isComplete: !todo.isComplete };
@@ -13,7 +15,7 @@ function CheckBox({ todos, setTodos, index }) {
     setTodos(newTodo);
   };
 
-  return <input type="checkbox" onClick={handleCheck} />;
+  return <input type="checkbox" onClick={handleCheck} checked={isComplete} />;
 }
 
 export default CheckBox;
