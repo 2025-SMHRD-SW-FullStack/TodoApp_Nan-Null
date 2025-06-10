@@ -36,7 +36,7 @@ const Todo = () => {
         </form>
       </div>
 
-      <div>
+      <div className="w-3/4">
         {todos.map((item, index) => (
           <TodoItem key={index} todoItem={item} index={index} />
         ))}
