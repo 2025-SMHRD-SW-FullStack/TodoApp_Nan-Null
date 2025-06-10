@@ -1,32 +1,19 @@
-import React from 'react'
+import React from "react";
 
-function CheckBox ({todos, setTodos, index}) {
-
+function CheckBox({ todos, setTodos, index }) {
   const handleCheck = (e) => {
-    const isCheck = e.target.checked;
-
-    const currentTodo = todos[index];
-    const isDel = currentTodo.isDel;
-    
-
-    const newTodo = todos.map((todo) => {
-      if(currentTodo.id === todo.id) {
-        return ({...todo, isDel:!todo.isDel});
-      } 
+    const newTodo = todos.map((todo, todoIndex) => {
+      if (index === todoIndex) {
+        return { ...todo, isComplete: !todo.isComplete };
+      }
 
       return todo;
-    })
+    });
 
     setTodos(newTodo);
-  }
+  };
 
-
-  
-
-
-  return (
-    <input type="checkbox" onClick={handleCheck}/>
-  )
+  return <input type="checkbox" onClick={handleCheck} />;
 }
 
-export default CheckBox
+export default CheckBox;
