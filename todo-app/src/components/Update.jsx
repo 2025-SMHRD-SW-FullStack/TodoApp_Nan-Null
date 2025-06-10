@@ -9,14 +9,14 @@ const Update = ({ index, todos, setTodos }) => {
       onClick={() => {
         if (!isEditing) {
           setIsEditing(!isEditing);
-          let newTodos = [...todos];
+          const newTodos = [...todos];
           newTodos[index].data = (
             <input type="text" placeholder={todos[index].data} ref={value} />
           );
           setTodos(newTodos);
         } else {
           setIsEditing(!isEditing);
-          let newTodos = [...todos];
+          const newTodos = [...todos];
           newTodos[index].data = value.current.value;
           setTodos(newTodos);
         }

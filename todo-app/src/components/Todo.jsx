@@ -63,7 +63,7 @@ const Todo = () => {
                 todoItem={item}
                 index={index}
                 buttons={buttons}
-              ></TodoItem>
+              />
             </>
           );
         })}
