@@ -11,8 +11,13 @@ const Todo = () => {
   const addTodo = (e) => {
     e.preventDefault();
 
-    const todo = inputRef.current.value;
-    setTodos([...todos, todo]);
+    const todoString = inputRef.current.value;
+    const todoObject = {
+      data: todoString,
+      isComplete: false,
+    };
+
+    setTodos([...todos, todoObject]);
 
     inputRef.current.value = "";
     inputRef.current.focus();
@@ -22,8 +27,15 @@ const Todo = () => {
     <div className="flex flex-col justify-center items-center">
       <h1>Todo List</h1>
       <div>
-        <form className="flex items-center justify-center h-[2.2rem] gap-x-3" onSubmit={addTodo}>
-          <input type="text" className="h-full m-0 p-0 box-border text-xl px-2  rounded-md" ref={inputRef} />
+        <form
+          className="flex items-center justify-center h-[2.2rem] gap-x-3"
+          onSubmit={addTodo}
+        >
+          <input
+            type="text"
+            className="h-full m-0 p-0 box-border text-xl px-2  rounded-md"
+            ref={inputRef}
+          />
           <input
             type="submit"
             className="flex justify-center items-center h-full px-3 py-2 rounded-md cursor-pointer border "
@@ -33,13 +45,28 @@ const Todo = () => {
       </div>
 
       <ol className="w-3/4 space-y-4">
-        {todos.map((item, index) => (
-          <TodoItem key={index} todoItem={item} index={index}>
-            <Update index={index} todos={todos} setTodos={setTodos} />
-             <TopMove todos={todos} setTodos={setTodos} index={index} />
-            <CheckBox todos={todos} setTodos={setTodos} index={index}/>
-          </TodoItem>
-        ))}
+        {todos.map((item, index) => {
+          const buttons = {
+            checkBox: (
+              <CheckBox todos={todos} setTodos={setTodos} index={index} />
+            ),
+            update: <Update index={index} todos={todos} setTodos={setTodos} />,
+            topMove: (
+              <TopMove todos={todos} setTodos={setTodos} index={index} />
+            ),
+          };
+
+          return (
+            <>
+              <TodoItem
+                key={index}
+                todoItem={item}
+                index={index}
+                buttons={buttons}
+              ></TodoItem>
+            </>
+          );
+        })}
       </ol>
     </div>
   );

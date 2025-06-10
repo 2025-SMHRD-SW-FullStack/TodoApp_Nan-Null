@@ -1,11 +1,25 @@
-const TodoItem = ({ todoItem, index, children }) => {
-    return (
-        <li className="flex gap-x-2 ">
-            <p className=" text-5xl m-0">
-                {index + 1}. {todoItem}
+const TodoItem = ({ todoItem, index, buttons }) => {
+  const { checkBox, update, topMove } = buttons;
+  const isCompleted = todoItem.isComplete;
+  return (
+    <li className="flex gap-x-2 ">
+      {isCompleted ? (
+        <div className="relative">
+          <del className="w-0 h-0">
+            <p className=" text-5xl m-0 flex items-center gap-x-4">
+              {index + 1}. {checkBox} {todoItem.data}
             </p>
-            {children}
-        </li>
-    );
+          </del>
+          <div className="absolute w-[100px] h-[5px] bg-black top-[48%]"></div>
+        </div>
+      ) : (
+        <p className=" text-5xl m-0 flex items-center gap-x-4">
+          {index + 1}. {checkBox} {todoItem.data}
+        </p>
+      )}
+      {update}
+      {topMove}
+    </li>
+  );
 };
 export default TodoItem;
