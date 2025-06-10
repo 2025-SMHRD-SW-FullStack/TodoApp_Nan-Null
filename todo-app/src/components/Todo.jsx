@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import TodoItem from "./TodoItem";
 import TopMove from "./TopMove";
+import CheckBox from "./CheckBox";
 
 const Todo = () => {
   const [todos, setTodos] = useState([]);
@@ -50,6 +51,7 @@ const Todo = () => {
         {todos.map((item, index) => (
           <TodoItem key={index} todoItem={item} index={index}>
             <TopMove todos={todos} setTodos={setTodos} index={index} />
+            <CheckBox todos={todos} setTodos={setTodos} index={index}/>
           </TodoItem>
         ))}
       </ol>
