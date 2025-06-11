@@ -1,5 +1,5 @@
 const TodoItem = ({ todoItem, index, buttons }) => {
-  const { checkBox, update, topMove } = buttons;
+  const { checkBox, update, topMove, deleteButton } = buttons;
   const isCompleted = todoItem.isComplete;
   return (
     <li className="flex gap-x-2 ">
@@ -23,6 +23,7 @@ const TodoItem = ({ todoItem, index, buttons }) => {
       )}
       {update}
       {topMove}
+      {deleteButton}
     </li>
   );
 };

@@ -3,6 +3,7 @@ import TodoItem from "./TodoItem";
 import Update from "./Update";
 import TopMove from "./TopMove";
 import CheckBox from "./CheckBox";
+import Delete from "./Delete";
 
 const Todo = () => {
   const [todos, setTodos] = useState([]);
@@ -54,6 +55,9 @@ const Todo = () => {
             topMove: (
               <TopMove todos={todos} setTodos={setTodos} index={index} />
             ),
+            deleteButton: (
+              <Delete setState={setTodos} todos={todos} index={index}/>
+            )
           };
 
           return (
